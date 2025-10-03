@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShopEase — E-Commerce Starter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="logo" href="#">Shop<span>Ease</span></a>
+      <div class="search-wrap">
+        <input id="searchInput" class="search" type="search" placeholder="Search products" aria-label="Search products"/>
+      </div>
+      <div class="actions">
+        <select id="categoryFilter" class="select" aria-label="Filter by category">
+          <option value="all">All Categories</option>
+        </select>
+        <select id="sortSelect" class="select" aria-label="Sort products">
+          <option value="relevance">Sort: Relevance</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="rating-desc">Rating: High → Low</option>
+          <option value="name-asc">Name: A → Z</option>
+        </select>
+        <button id="cartBtn" class="cart-btn" aria-label="Open cart" type="button">
+          <span class="cart-icon">🛒</span>
+          <span id="cartCount" class="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main">
+  <aside class="filters">
+    <h3>Quick Filters</h3>
+    <div class="chip-group" id="chipGroup"></div>
+    
+    <h3>Price</h3>
+    <div class="range-row">
+      <input id="minPrice" type="number" min="0" placeholder="Min" class="price-input"/>
+      <input id="maxPrice" type="number" min="0" placeholder="Max" class="price-input"/>
+      <button id="applyPrice" class="btn" type="button">Apply</button>
+    </div>
+  </aside>
+  <section class="grid" id="productGrid">
+  </section>
+</main>
+  <div id="cartDrawer" class="drawer" aria-hidden="true">
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <h3>Your Cart</h3>
+        <button id="closeCart" class="icon-btn" aria-label="Close cart" type="button">✕</button>
+      </div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="drawer-foot">
+        <div class="totals">
+          <span>Subtotal</span>
+          <strong id="subtotal">₹0</strong>
+        </div>
+        <button id="checkoutBtn" class="btn primary" type="button">Checkout</button>
+        <button id="clearCartBtn" class="btn light" type="button">Clear Cart</button>
+      </div>
+    </div>
+    <div class="backdrop" id="backdrop"></div>
+  </div>
+
+  <template id="productCardTpl">
+    <article class="card">
+      <div class="img-wrap">
+        <img class="card-img" src="" alt="Product image"/>
+        <div class="pill rating"></div>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title"></h4>
+        <p class="muted card-category"></p>
+        <div class="price-row">
+          <span class="price"></span>
+          <button class="btn add" type="button">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <template id="cartItemTpl">
+    <div class="cart-row" data-id="">
+      <img class="thumb" src="" alt="Thumbnail"/>
+      <div class="cart-meta">
+        <strong class="title"></strong>
+        <span class="muted small cat"></span>
+        <div class="qty-row">
+          <button class="icon-btn dec" type="button">−</button>
+          <input type="number" class="qty" min="1" value="1"/>
+          <button class="icon-btn inc" type="button">+</button>
+        </div>
+      </div>
+      <div class="cart-price">
+        <span class="line-price"></span>
+        <button class="icon-btn remove" aria-label="Remove" type="button">🗑️</button>
+      </div>
+    </div>
+  </template>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> ShopEase. All rights reserved.</p>
+      <nav class="footer-nav">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Help</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
